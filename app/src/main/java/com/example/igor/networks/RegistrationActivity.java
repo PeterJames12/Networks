@@ -1,10 +1,13 @@
 package com.example.igor.networks;
 
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.igor.networks.service.factory.ServiceFactory;
+
+import org.springframework.mail.SimpleMailMessage;
 
 /**
  * @author Igor Hnes on 06.06.17.
@@ -22,6 +25,11 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     public void confirmRegistration(View view) {
-        Snackbar.make(view, "successful registration", Snackbar.LENGTH_LONG).show();
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo("Joyukr@ukr.net");
+        message.setSubject("Networks");
+        message.setText("Hello");
+
+        ServiceFactory.getEmailService().sendMessage(message);
     }
 }
