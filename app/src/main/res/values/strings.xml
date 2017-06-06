@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Networks</string>
+    <string name="login">Sign in</string>
+    <string name="test_chain">Test Chain</string>
+    <string name="your_email">Your email</string>
+    <string name="your_password">Your password</string>
+    <string name="ok">OK</string>
+    <string name="how_much">how much</string>
+    <string name="forgot_password">forgot password</string>
+    <string name="sign_up">Sign up</string>
+    <string name="enter_your_email">enter your email</string>
+    <string name="sent">Sent</string>
+    <string name="your_name">Your name</string>
+    <string name="confirm">Confirm</string>
+    <string name="profile">Profile</string>
+    <string name="something">Something</string>
+</resources>
