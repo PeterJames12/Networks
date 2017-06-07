@@ -44,7 +44,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
-        android:onClick="confirmRegistration"
         android:textColor="#FFFFFF"
         android:layout_alignEnd="@+id/editText4"
         android:layout_alignRight="@+id/editText4"

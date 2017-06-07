@@ -7,8 +7,19 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.igor.networks.R;
+import com.example.igor.networks.model.Event;
+import com.squareup.picasso.Picasso;
+
+import java.util.LinkedList;
+import java.util.List;
+
+import fr.tkeunebr.gravatar.Gravatar;
+import io.realm.Realm;
+import io.realm.RealmResults;
 
 
 /**
@@ -25,6 +36,26 @@ public class ProfileFragments extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.profile_layout, null);
+        View view = inflater.inflate(R.layout.profile_layout, null);
+
+        loadUserPhoto(view);
+
+        return view;
+    }
+
+    private void loadUserPhoto(View view) {
+        ImageView imageView = (ImageView) view.findViewById(R.id.userPhoto);
+
+        String gravatarUrl = Gravatar.init().with("joyukr@ukr.net")
+                .force404()
+                .rating(Gravatar.Rating.g)
+                .size(122)
+                .build();
+
+        Picasso.with(view.getContext())
+                .load(gravatarUrl)
+                .into((ImageView) imageView.findViewById(R.id.userPhoto));
+
+        ((TextView) view.findViewById(R.id.txtUserName)).setText("Igor Hnes");
     }
 }
