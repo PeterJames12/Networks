@@ -10,31 +10,28 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.igor.networks.R;
-import com.example.igor.networks.model.Event;
 
 import java.util.LinkedList;
 import java.util.List;
 
 import io.realm.Realm;
-import io.realm.RealmResults;
 
 /**
- * @author Igor Hnes on 06.06.17.
+ * @author Igor Hnes on 6/8/17.
  */
 
-public class SomethingFragments extends Fragment {
+public class MyEventFragment extends Fragment {
 
-    public static final String TAG = "SomethingFragments";
-
-    public SomethingFragments() {
+    public MyEventFragment() {
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.something, container, false);
-        ListView listView = (ListView)view.findViewById(R.id.listEvent);
+        View view = inflater.inflate(R.layout.my_event_layout, container, false);
+        ListView listView = (ListView) view.findViewById(R.id.listMyEvent);
         List<String> list = getAllListEvents();
+        Realm.init(view.getContext());
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity().getApplicationContext(),
                 android.R.layout.simple_list_item_1, list);
         listView.setAdapter(adapter);
@@ -42,19 +39,24 @@ public class SomethingFragments extends Fragment {
     }
 
     private List<String> getAllListEvents() {
-        RealmResults<Event> todaysEvents = getTodaysEvents();
+//        RealmResults<Event> todaysEvents = getTodaysEvents();
         List<String> list = new LinkedList<>();
 
-        list.add("Something");
+        list.add("My events");
 
-        for (Event todaysEvent : todaysEvents) {
-            list.add(todaysEvent.getWinner() + " " + todaysEvent.getTotal());
-        }
+//        for (Event todaysEvent : todaysEvents) {
+//            list.add(todaysEvent.getWinner() + " " + todaysEvent.getTotal());
+//        }
         return list;
     }
 
-    public RealmResults<Event> getTodaysEvents() {
-        Realm realm = Realm.getDefaultInstance();
-        return realm.where(Event.class).findAll();
-    }
+//    public RealmResults<Event> getTodaysEvents() {
+//        Realm realm = Realm.getDefaultInstance();
+//        return realm.where(Event.class).findAll();
+//    }
+//
+//    public RealmResults<MyEvents> getMyEvents() {
+//        Realm realm = Realm.getDefaultInstance();
+//        return realm.where(MyEvents.class).findAll();
+//    }
 }

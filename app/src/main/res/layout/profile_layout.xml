@@ -8,14 +8,14 @@
 
 
     <TextView
-        android:id="@+id/txtUserName"
+        android:id="@+id/txtUserId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="39dp"
+        android:layout_marginStart="87dp"
         android:text="Name"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/userPhoto"
-        android:layout_marginTop="52dp" />
+        android:layout_marginTop="12dp"
+        android:layout_alignTop="@+id/userPhoto"
+        android:layout_toEndOf="@+id/userPhoto" />
 
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -32,12 +32,13 @@
         android:layout_marginTop="15dp" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/txtUserMoney"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:text="Total $: "
         android:layout_below="@+id/userPhoto"
-        android:layout_marginTop="60dp"
-        android:layout_toStartOf="@+id/txtUserName"
-        android:text="Total $: " />
+        android:layout_alignEnd="@+id/txtUserId"
+        android:layout_marginEnd="11dp" />
 
 </RelativeLayout>

@@ -8,13 +8,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.igor.networks.MainActivity;
 import com.example.igor.networks.R;
 import com.squareup.picasso.Picasso;
 import fr.tkeunebr.gravatar.Gravatar;
-
-import java.util.Collections;
-import java.util.List;
 
 /**
  * @author Igor Hnes on 6/7/17.
@@ -58,7 +54,7 @@ public class GravatarUtil extends BaseAdapter {
                 .error(R.drawable.material_drawer_badge)
                 .into((ImageView) convertView.findViewById(R.id.userPhoto));
 
-        ((TextView) convertView.findViewById(R.id.txtUserName)).setText("Igor Hnes");
+        ((TextView) convertView.findViewById(R.id.txtUserId)).setText("Igor Hnes");
 
         return convertView;
     }

@@ -5,39 +5,25 @@
 
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/txtUserEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="@string/your_email"
         android:ems="14"
         android:inputType="textEmailAddress"
-        android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/editText7"
-        android:layout_alignStart="@+id/editText7"
-        android:layout_marginTop="33dp" />
+        android:layout_above="@+id/txtUserPassword"
+        android:layout_alignStart="@+id/txtUserPassword" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/txtUserPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="@string/your_password"
-        android:layout_marginTop="16dp"
         android:ems="14"
         android:inputType="textPassword"
-        android:layout_below="@+id/editText7"
-        android:layout_centerHorizontal="true" />
-
-    <EditText
-        android:id="@+id/editText7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/your_name"
-        android:ems="14"
-        android:inputType="text"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/editText3"
-        android:layout_alignLeft="@+id/editText4"
-        android:layout_alignStart="@+id/editText4" />
+        android:layout_marginBottom="17dp"
+        android:layout_above="@+id/btbConfirmRegistration"
+        android:layout_alignEnd="@+id/btbConfirmRegistration" />
 
     <Button
         android:id="@+id/btbConfirmRegistration"
@@ -45,9 +31,10 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:textColor="#FFFFFF"
-        android:layout_alignEnd="@+id/editText4"
-        android:layout_alignRight="@+id/editText4"
+        android:onClick="confirm"
+        android:text="@string/confirm"
         android:layout_centerVertical="true"
-        android:text="@string/confirm" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="54dp" />
 
 </RelativeLayout>

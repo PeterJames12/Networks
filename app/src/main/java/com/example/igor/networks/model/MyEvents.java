@@ -3,12 +3,12 @@ package com.example.igor.networks.model;
 import io.realm.RealmObject;
 
 /**
- * @author Igor Hnes on 6/6/17.
+ * @author Igor Hnes on 6/7/17.
  */
-public class User extends RealmObject {
+
+public class MyEvents {
 
     private String name;
-    private int money;
 
     public String getName() {
         return name;
@@ -16,13 +16,5 @@ public class User extends RealmObject {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getMoney() {
-        return money;
-    }
-
-    public void setMoney(int money) {
-        this.money = money;
     }
 }

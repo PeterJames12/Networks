@@ -11,24 +11,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.igor.networks.R;
-import com.example.igor.networks.model.Event;
+import com.example.igor.networks.model.Player;
 import com.squareup.picasso.Picasso;
-
-import java.util.LinkedList;
-import java.util.List;
 
 import fr.tkeunebr.gravatar.Gravatar;
 import io.realm.Realm;
-import io.realm.RealmResults;
-
 
 /**
  * @author Igor Hnes on 06.06.17.
  */
 
 public class ProfileFragments extends Fragment {
-
-    public static final String TAG = "ProfileFragments";
 
     public ProfileFragments() {
     }
@@ -39,14 +32,16 @@ public class ProfileFragments extends Fragment {
         View view = inflater.inflate(R.layout.profile_layout, null);
 
         loadUserPhoto(view);
-
         return view;
     }
 
     private void loadUserPhoto(View view) {
         ImageView imageView = (ImageView) view.findViewById(R.id.userPhoto);
 
-        String gravatarUrl = Gravatar.init().with("joyukr@ukr.net")
+        Realm realm = Realm.getDefaultInstance();
+        Player user = realm.where(Player.class).equalTo("id", 1).findFirst();
+
+        String gravatarUrl = Gravatar.init().with(user.getEmail())
                 .force404()
                 .rating(Gravatar.Rating.g)
                 .size(122)
@@ -56,6 +51,8 @@ public class ProfileFragments extends Fragment {
                 .load(gravatarUrl)
                 .into((ImageView) imageView.findViewById(R.id.userPhoto));
 
-        ((TextView) view.findViewById(R.id.txtUserName)).setText("Igor Hnes");
+        ((TextView) view.findViewById(R.id.txtUserId)).setText("Your id: " + user.getId() + "");
+
+        ((TextView) view.findViewById(R.id.txtUserMoney)).setText("Total money : " + user.getMoney() + " $");
     }
 }

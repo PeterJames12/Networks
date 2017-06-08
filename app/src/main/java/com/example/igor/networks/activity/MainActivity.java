@@ -1,41 +1,29 @@
-package com.example.igor.networks;
+package com.example.igor.networks.activity;
 
-import android.app.Activity;
-import android.graphics.drawable.Icon;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
 
+import com.example.igor.networks.R;
+import com.example.igor.networks.fragments.MyEventFragment;
 import com.example.igor.networks.fragments.ProfileFragments;
-import com.example.igor.networks.fragments.SomethingFragments;
-import com.example.igor.networks.model.Event;
-import com.example.igor.networks.util.GravatarUtil;
+import com.example.igor.networks.fragments.ResentEventFragments;
+import com.example.igor.networks.fragments.TakePart;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
-import com.mikepenz.materialdrawer.icons.MaterialDrawerFont;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
-import com.squareup.picasso.Picasso;
 
-import org.joda.time.LocalDate;
-
-import java.util.LinkedList;
-import java.util.List;
-
-import fr.tkeunebr.gravatar.Gravatar;
 import io.realm.Realm;
-import io.realm.RealmQuery;
-import io.realm.RealmResults;
 
 /**
  * @author Igor Hnes on 06.06.17.
@@ -65,6 +53,8 @@ public class MainActivity extends AppCompatActivity implements Drawer.OnDrawerIt
                 .withAccountHeader(headerResult)
                 .addDrawerItems(new PrimaryDrawerItem().withName(R.string.profile).withIdentifier(0))
                 .addDrawerItems(new PrimaryDrawerItem().withName(R.string.something).withIdentifier(1))
+                .addDrawerItems(new PrimaryDrawerItem().withName(R.string.take_part).withIdentifier(2))
+                .addDrawerItems(new PrimaryDrawerItem().withName(R.string.my_events).withIdentifier(3))
                 .withSelectedItem(0)
                 .withFireOnInitialOnClick(true)
                 .withOnDrawerItemClickListener(this)
@@ -85,7 +75,6 @@ public class MainActivity extends AppCompatActivity implements Drawer.OnDrawerIt
                 .build();
     }
 
-
     @Override
     public void onBackPressed() {
         if (drawer != null && drawer.isDrawerOpen()) {
@@ -103,7 +92,13 @@ public class MainActivity extends AppCompatActivity implements Drawer.OnDrawerIt
                 fragment = new ProfileFragments();
                 break;
             case 1:
-                fragment = new SomethingFragments();
+                fragment = new ResentEventFragments();
+                break;
+            case 2:
+                fragment = new TakePart();
+                break;
+            case 3:
+                fragment = new MyEventFragment();
                 break;
             default:
                 break;
@@ -115,5 +110,23 @@ public class MainActivity extends AppCompatActivity implements Drawer.OnDrawerIt
                     .commitAllowingStateLoss();
         }
         return false;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // todo actually doesn't work in @link MainActivity
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+
+    public void info(MenuItem menu) {
+        Intent intent = new Intent(getApplicationContext(), InfoActivity.class);
+        startActivity(intent);
+    }
+
+    public void settings(MenuItem menu) {
+        Intent intent = new Intent(getApplicationContext(), SettingActivity.class);
+        startActivity(intent);
     }
 }

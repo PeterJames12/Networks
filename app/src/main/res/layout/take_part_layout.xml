@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/txtHowMuch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="130dp"
+        android:ems="10"
+        android:hint="@string/how_much"
+        android:inputType="number"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/btnTakePart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/txtHowMuch"
+        android:background="@color/colorPrimary"
+        android:textColor="#FFFFFF"
+        android:layout_below="@+id/txtHowMuch"
+        android:layout_marginTop="18dp"
+        android:text="@string/take_part" />
+</RelativeLayout>

@@ -11,7 +11,7 @@ import io.realm.RealmObject;
  * @author Igor Hnes on 6/6/17.
  */
 
-public class Event extends RealmObject {
+public class Event {
 
     private String winner;
     private int total;
