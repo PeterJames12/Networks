@@ -10,9 +10,11 @@ import android.widget.TextView;
 
 import com.example.igor.networks.R;
 import com.example.igor.networks.model.Player;
+import com.example.igor.networks.model.User;
 import com.mikepenz.materialdrawer.util.KeyboardUtil;
 
 import io.realm.Realm;
+import io.realm.RealmConfiguration;
 
 /**
  * @author Igor Hnes on 06.06.17.
@@ -29,41 +31,42 @@ public class LoginActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        String email = getIntent().getStringExtra("login");
+        String nicName = getIntent().getStringExtra("nicName");
         String password = getIntent().getStringExtra("password");
 
-        TextView emailText = (TextView) findViewById(R.id.txtEmail);
+        TextView txtNicName = (TextView) findViewById(R.id.txtNicName);
         TextView passwordText = (TextView) findViewById(R.id.txtPassword);
 
-        emailText.setText(email);
+        txtNicName.setText(nicName);
         passwordText.setText(password);
     }
 
     public void login(View view) {
 
-        TextView emailText = (TextView) findViewById(R.id.txtEmail);
+        TextView txtNicName = (TextView) findViewById(R.id.txtNicName);
         TextView passwordText = (TextView) findViewById(R.id.txtPassword);
 
         realm = Realm.getDefaultInstance();
 
         realm.beginTransaction();
-        Player player = realm.where(Player.class).equalTo("email", emailText.getText().toString()).findFirst();
+        User user = realm.where(User.class).equalTo("nicName", txtNicName.getText().toString()).findFirst();
         realm.commitTransaction();
 
-        if (emailText.getText().toString().equals("") || passwordText.getText().toString().equals("")) {
+        if (txtNicName.getText().toString().equals("") || passwordText.getText().toString().equals("")) {
             KeyboardUtil.hideKeyboard(this);
             Snackbar.make(view, "User not found 2", Snackbar.LENGTH_LONG).show();
             return;
         }
 
-        if (player == null) {
+        if (user == null) {
             KeyboardUtil.hideKeyboard(this);
             Snackbar.make(view, "User not found 2", Snackbar.LENGTH_LONG).show();
             return;
         }
 
-        if (emailText.getText().toString().equals(player.getEmail())
-                && passwordText.getText().toString().equals(player.getPassword())) {
+        if (txtNicName.getText().toString().equals(user.getNicName())
+                && passwordText.getText().toString().equals(user.getPassword())) {
+            KeyboardUtil.hideKeyboard(this);
             final Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
         } else {
@@ -84,8 +87,8 @@ public class LoginActivity extends AppCompatActivity {
 //        realm = Realm.getDefaultInstance();
 
 //        realm.beginTransaction();
-//        realm.delete(Player.class);
-//        realm.createObject(Player.class);
+//        realm.delete(User.class);
+//        realm.createObject(User.class);
 //        realm.commitTransaction();
 
         final Intent intent = new Intent(getApplicationContext(), RegistrationActivity.class);

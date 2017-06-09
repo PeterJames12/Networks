@@ -38,7 +38,9 @@ public class MainActivity extends AppCompatActivity implements Drawer.OnDrawerIt
         setContentView(R.layout.main_layout);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         initializeNavigationDrawer(toolbar);
+
         Realm.init(this);
     }
 
@@ -66,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements Drawer.OnDrawerIt
                 .withName("Tetyana Zakharchenko")
                 .withEmail("Zakharchenko_t@gmail.com")
                 .withIcon(getResources().getDrawable(R.drawable.material_drawer_badge));
-        
+
         return new AccountHeaderBuilder()
                 .withDividerBelowHeader(true)
                 .withActivity(this)
@@ -86,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements Drawer.OnDrawerIt
 
     @Override
     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-        Fragment fragment= null;
+        Fragment fragment = null;
         switch ((int) drawerItem.getIdentifier()) {
             case 0:
                 fragment = new ProfileFragments();
@@ -114,18 +116,30 @@ public class MainActivity extends AppCompatActivity implements Drawer.OnDrawerIt
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // todo actually doesn't work in @link MainActivity
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_info:
+                info();
+                return true;
+            case R.id.menu_settings:
+                settings();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
-    public void info(MenuItem menu) {
+    public void info() {
         Intent intent = new Intent(getApplicationContext(), InfoActivity.class);
         startActivity(intent);
     }
 
-    public void settings(MenuItem menu) {
+    public void settings() {
         Intent intent = new Intent(getApplicationContext(), SettingActivity.class);
         startActivity(intent);
     }

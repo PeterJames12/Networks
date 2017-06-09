@@ -12,19 +12,6 @@
         android:layout_height="656dp">
 
         <EditText
-            android:id="@+id/txtEmail"
-            android:layout_width="299dp"
-            android:layout_height="50dp"
-            android:ems="10"
-            android:inputType="textEmailAddress"
-            android:hint="@string/your_email"
-            tools:layout_editor_absoluteX="32dp"
-            tools:layout_editor_absoluteY="154dp"
-            android:layout_marginTop="109dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignStart="@+id/txtPassword" />
-
-        <EditText
             android:id="@+id/txtPassword"
             android:layout_width="299dp"
             android:layout_height="50dp"
@@ -33,9 +20,9 @@
             android:hint="@string/your_password"
             tools:layout_editor_absoluteX="32dp"
             tools:layout_editor_absoluteY="221dp"
-            android:layout_marginTop="21dp"
-            android:layout_below="@+id/txtEmail"
-            android:layout_alignStart="@+id/btnSignUp" />
+            android:layout_marginTop="27dp"
+            android:layout_below="@+id/txtNicName"
+            android:layout_alignEnd="@+id/btnLogin" />
 
         <Button
             android:id="@+id/btnLogin"
@@ -45,13 +32,13 @@
             android:textColor="#FFFFFF"
             android:text="@string/login"
             android:onClick="login"
-            tools:layout_editor_absoluteX="215dp"
+            tools:layout_editor_absoluteX="245dp"
             tools:layout_editor_absoluteY="282dp"
             android:layout_marginRight="14dp"
             android:layout_alignBaseline="@+id/btnSignUp"
             android:layout_alignBottom="@+id/btnSignUp"
             android:layout_toEndOf="@+id/btnSignUp"
-            android:layout_marginStart="26dp" />
+            android:layout_marginStart="16dp" />
 
         <Button
             android:id="@+id/btnSignUp"
@@ -61,10 +48,22 @@
             android:onClick="registration"
             android:background="@color/colorPrimary"
             android:text="@string/sign_up"
-            android:layout_marginStart="26dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="31dp"
             android:layout_below="@+id/txtPassword"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="24dp" />
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:id="@+id/txtNicName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/nic_name"
+            android:inputType="textPersonName"
+            android:layout_marginTop="166dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/txtPassword"
+            android:layout_alignEnd="@+id/txtPassword" />
 
     </RelativeLayout>
 

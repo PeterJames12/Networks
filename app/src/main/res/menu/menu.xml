@@ -3,16 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/menuInfo"
+        android:id="@+id/menu_info"
         android:orderInCategory="1"
         android:title="@string/info"
-        android:onClick="info"
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/menuSettings"
-        android:orderInCategory="2"
+        android:id="@+id/menu_settings"
+        android:orderInCategory="1"
         android:title="@string/settings"
-        android:onClick="settings"
         app:showAsAction="never" />
 </menu>

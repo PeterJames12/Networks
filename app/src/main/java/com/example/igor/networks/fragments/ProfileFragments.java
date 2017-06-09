@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.igor.networks.R;
 import com.example.igor.networks.model.Player;
+import com.example.igor.networks.model.User;
 import com.squareup.picasso.Picasso;
 
 import fr.tkeunebr.gravatar.Gravatar;
@@ -39,7 +40,7 @@ public class ProfileFragments extends Fragment {
         ImageView imageView = (ImageView) view.findViewById(R.id.userPhoto);
 
         Realm realm = Realm.getDefaultInstance();
-        Player user = realm.where(Player.class).equalTo("id", 1).findFirst();
+        User user = realm.where(User.class).findFirst();
 
         String gravatarUrl = Gravatar.init().with(user.getEmail())
                 .force404()
@@ -51,8 +52,8 @@ public class ProfileFragments extends Fragment {
                 .load(gravatarUrl)
                 .into((ImageView) imageView.findViewById(R.id.userPhoto));
 
-        ((TextView) view.findViewById(R.id.txtUserId)).setText("Your id: " + user.getId() + "");
-
-        ((TextView) view.findViewById(R.id.txtUserMoney)).setText("Total money : " + user.getMoney() + " $");
+        ((TextView) view.findViewById(R.id.txtUserId)).setText(user.getNicName());
+//
+//        ((TextView) view.findViewById(R.id.txtUserMoney)).setText("Total money : " + user.getMoney() + " $");
     }
 }

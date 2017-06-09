@@ -1,7 +1,5 @@
 package com.example.igor.networks.model;
 
-import io.realm.RealmObject;
-
 /**
  * @author Igor Hnes on 6/7/17.
  */

@@ -15,6 +15,7 @@ public class SettingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // TODO: 08.06.17  add setting layout
         setContentView(R.layout.activity_info);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
