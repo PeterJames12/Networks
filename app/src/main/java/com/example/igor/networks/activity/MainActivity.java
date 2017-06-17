@@ -10,10 +10,12 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.igor.networks.R;
-import com.example.igor.networks.fragments.MyEventFragment;
-import com.example.igor.networks.fragments.ProfileFragments;
-import com.example.igor.networks.fragments.ResentEventFragments;
-import com.example.igor.networks.fragments.TakePart;
+import com.example.igor.networks.fragments.CantripFragment;
+import com.example.igor.networks.fragments.ProfileFragment;
+import com.example.igor.networks.fragments.RecentRatesFragment;
+import com.example.igor.networks.fragments.SettingsFragment;
+import com.example.igor.networks.fragments.StatisticFragment;
+import com.example.igor.networks.fragments.WinnersFragment;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -36,11 +38,9 @@ public class MainActivity extends AppCompatActivity implements Drawer.OnDrawerIt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_layout);
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         initializeNavigationDrawer(toolbar);
-
         Realm.init(this);
     }
 
@@ -54,9 +54,11 @@ public class MainActivity extends AppCompatActivity implements Drawer.OnDrawerIt
                 .withActionBarDrawerToggleAnimated(true)
                 .withAccountHeader(headerResult)
                 .addDrawerItems(new PrimaryDrawerItem().withName(R.string.profile).withIdentifier(0))
-                .addDrawerItems(new PrimaryDrawerItem().withName(R.string.something).withIdentifier(1))
-                .addDrawerItems(new PrimaryDrawerItem().withName(R.string.take_part).withIdentifier(2))
-                .addDrawerItems(new PrimaryDrawerItem().withName(R.string.my_events).withIdentifier(3))
+                .addDrawerItems(new PrimaryDrawerItem().withName(R.string.cantrip).withIdentifier(1))
+                .addDrawerItems(new PrimaryDrawerItem().withName(R.string.recent_rates).withIdentifier(2))
+                .addDrawerItems(new PrimaryDrawerItem().withName(R.string.winners).withIdentifier(3))
+                .addDrawerItems(new PrimaryDrawerItem().withName(R.string.statistic).withIdentifier(4))
+                .addDrawerItems(new PrimaryDrawerItem().withName(R.string.settings).withIdentifier(5))
                 .withSelectedItem(0)
                 .withFireOnInitialOnClick(true)
                 .withOnDrawerItemClickListener(this)
@@ -67,13 +69,13 @@ public class MainActivity extends AppCompatActivity implements Drawer.OnDrawerIt
         IProfile profile = new ProfileDrawerItem()
                 .withName("Tetyana Zakharchenko")
                 .withEmail("Zakharchenko_t@gmail.com")
-                .withIcon(getResources().getDrawable(R.drawable.material_drawer_badge));
+                .withIcon(getResources().getDrawable(R.drawable.favicon));
 
         return new AccountHeaderBuilder()
                 .withDividerBelowHeader(true)
                 .withActivity(this)
                 .addProfiles(profile)
-//                .withHeaderBackground(R.drawable.profile)
+//                .withHeaderBackground(R.drawable.btc)
                 .build();
     }
 
@@ -91,16 +93,22 @@ public class MainActivity extends AppCompatActivity implements Drawer.OnDrawerIt
         Fragment fragment = null;
         switch ((int) drawerItem.getIdentifier()) {
             case 0:
-                fragment = new ProfileFragments();
+                fragment = new ProfileFragment();
                 break;
             case 1:
-                fragment = new ResentEventFragments();
+                fragment = new CantripFragment();
                 break;
             case 2:
-                fragment = new TakePart();
+                fragment = new RecentRatesFragment();
                 break;
             case 3:
-                fragment = new MyEventFragment();
+                fragment = new WinnersFragment();
+                break;
+            case 4:
+                fragment = new StatisticFragment();
+                break;
+            case 5:
+                fragment = new SettingsFragment();
                 break;
             default:
                 break;
@@ -120,27 +128,8 @@ public class MainActivity extends AppCompatActivity implements Drawer.OnDrawerIt
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_info:
-                info();
-                return true;
-            case R.id.menu_settings:
-                settings();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-    public void info() {
+    public void info(MenuItem menuItem) {
         Intent intent = new Intent(getApplicationContext(), InfoActivity.class);
-        startActivity(intent);
-    }
-
-    public void settings() {
-        Intent intent = new Intent(getApplicationContext(), SettingActivity.class);
         startActivity(intent);
     }
 }

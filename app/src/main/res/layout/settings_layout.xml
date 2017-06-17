@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="25dp"
+        android:ems="14"
+        android:hint="add your email"
+        android:background="@color/colorAccent"
+        android:inputType="textEmailAddress"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/btnSetEmail"
+        android:background="@color/colorPrimary"
+        android:textColor="#FFFFFF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ADD"
+        android:layout_marginTop="14dp"
+        android:layout_below="@+id/editText" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ADD"
+        android:textColor="#FFFFFF"
+        android:background="@color/colorPrimary"
+        android:layout_below="@+id/editText3"
+        android:layout_alignStart="@+id/btnSetEmail"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="23dp" />
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="13dp"
+        android:ems="14"
+        android:background="@color/colorAccent"
+        android:hint="add your wallet"
+        android:inputType="textPersonName"
+        android:layout_below="@+id/btnSetEmail"
+        android:layout_alignStart="@+id/editText"
+        android:layout_marginTop="35dp" />
+
+</RelativeLayout>

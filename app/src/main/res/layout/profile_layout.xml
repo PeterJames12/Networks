@@ -36,9 +36,60 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
-        android:text="Total $: "
         android:layout_below="@+id/userPhoto"
         android:layout_alignEnd="@+id/txtUserId"
         android:layout_marginEnd="11dp" />
+
+    <TextView
+        android:id="@+id/txtUserStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/txtUserMoney"
+        android:layout_alignStart="@+id/txtUserId"
+        android:layout_marginBottom="16dp"
+        android:text="Status"/>
+
+    <TextView
+        android:id="@+id/txtUserPlayedGames"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Played games"
+        android:layout_above="@+id/txtWonGames"
+        android:layout_alignEnd="@+id/txtUserStatus"
+        android:layout_marginBottom="31dp" />
+
+    <TextView
+        android:id="@+id/txtWonGames"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/txtUserMoney"
+        android:layout_alignEnd="@+id/txtUserMoney"
+        android:layout_marginBottom="21dp"
+        android:text="Won games" />
+
+    <TextView
+        android:id="@+id/txtBiggestWin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Biggest win"
+        android:layout_below="@+id/txtUserMoney"
+        android:layout_alignEnd="@+id/txtUserMoney" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5 min left before founder"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/txtWonGames" />
+
+    <TextView
+        android:id="@+id/txtWonMoney"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Won money in total"
+        android:layout_below="@+id/txtUserPlayedGames"
+        android:layout_toEndOf="@+id/txtUserPlayedGames"
+        android:layout_marginStart="18dp" />
 
 </RelativeLayout>

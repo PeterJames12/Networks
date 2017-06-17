@@ -9,12 +9,12 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.igor.networks.R;
-import com.example.igor.networks.model.Player;
-import com.example.igor.networks.model.User;
+import com.example.igor.networks.model.CurrentUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.mikepenz.materialdrawer.util.KeyboardUtil;
 
 import io.realm.Realm;
-import io.realm.RealmConfiguration;
 
 /**
  * @author Igor Hnes on 06.06.17.
@@ -22,56 +22,61 @@ import io.realm.RealmConfiguration;
 public class LoginActivity extends AppCompatActivity {
 
     private Realm realm;
+    private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout);
         Realm.init(this);
+        realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+//        realm.delete(CurrentUser.class);
+//        realm.delete(User.class);
+        CurrentUser user = realm.where(CurrentUser.class).findFirst();
+        realm.commitTransaction();
+        if (user == null) {
+            registration(getCurrentFocus());
+        }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        String nicName = getIntent().getStringExtra("nicName");
         String password = getIntent().getStringExtra("password");
-
-        TextView txtNicName = (TextView) findViewById(R.id.txtNicName);
         TextView passwordText = (TextView) findViewById(R.id.txtPassword);
 
-        txtNicName.setText(nicName);
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference().child("user");
         passwordText.setText(password);
     }
 
     public void login(View view) {
-
-        TextView txtNicName = (TextView) findViewById(R.id.txtNicName);
-        TextView passwordText = (TextView) findViewById(R.id.txtPassword);
-
+        TextView password = (TextView) findViewById(R.id.txtPassword);
         realm = Realm.getDefaultInstance();
-
         realm.beginTransaction();
-        User user = realm.where(User.class).equalTo("nicName", txtNicName.getText().toString()).findFirst();
+        CurrentUser user = realm.where(CurrentUser.class).equalTo("password", password.getText().toString()).findFirst();
         realm.commitTransaction();
-
-        if (txtNicName.getText().toString().equals("") || passwordText.getText().toString().equals("")) {
+        String notFound = "User not found";
+        if (password.getText().toString().equals("") || password.getText().toString().equals("")) {
             KeyboardUtil.hideKeyboard(this);
-            Snackbar.make(view, "User not found 2", Snackbar.LENGTH_LONG).show();
+            Snackbar.make(view, notFound, Snackbar.LENGTH_LONG).show();
             return;
         }
 
         if (user == null) {
             KeyboardUtil.hideKeyboard(this);
-            Snackbar.make(view, "User not found 2", Snackbar.LENGTH_LONG).show();
+            Snackbar.make(view, notFound, Snackbar.LENGTH_LONG).show();
             return;
         }
 
-        if (txtNicName.getText().toString().equals(user.getNicName())
-                && passwordText.getText().toString().equals(user.getPassword())) {
+        if (password.getText().toString().equals(user.getPassword())) {
             KeyboardUtil.hideKeyboard(this);
+//            forCurrentUser(user);
             final Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
         } else {
             KeyboardUtil.hideKeyboard(this);
-            Snackbar.make(view, "User not found", Snackbar.LENGTH_LONG).show();
+            Snackbar.make(view, notFound, Snackbar.LENGTH_LONG).show();
+
         }
     }
 
@@ -83,16 +88,30 @@ public class LoginActivity extends AppCompatActivity {
 //                .build();
 //
 //        Realm.setDefaultConfiguration(config);
-//
-//        realm = Realm.getDefaultInstance();
 
+//        realm = Realm.getDefaultInstance();
 //        realm.beginTransaction();
 //        realm.delete(User.class);
+//        realm.delete(CurrentUser.class);
 //        realm.createObject(User.class);
+//        realm.createObject(CurrentUser.class);
 //        realm.commitTransaction();
 
         final Intent intent = new Intent(getApplicationContext(), RegistrationActivity.class);
         startActivity(intent);
+    }
+
+    private void forCurrentUser(CurrentUser user) {
+        CurrentUser currentUser = new CurrentUser();
+
+        currentUser.setNicName(user.getNicName());
+        currentUser.setPassword(user.getPassword());
+        currentUser.setKey(user.getKey());
+        realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+        realm.delete(CurrentUser.class);
+        realm.insert(currentUser);
+        realm.commitTransaction();
     }
 
     @Override

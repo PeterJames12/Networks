@@ -1,30 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/welcome"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <EditText
-        android:id="@+id/txtUserEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/your_email"
+        android:id="@+id/txtUserNicName"
+        android:layout_width="299dp"
+        android:layout_height="48dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:hint="@string/nic_name"
+        android:background="@color/colorAccent"
         android:ems="14"
-        android:inputType="textEmailAddress"
-        android:layout_above="@+id/txtUserPassword"
-        android:layout_alignStart="@+id/txtUserPassword"
-        android:layout_marginBottom="17dp" />
+        android:inputType="textPersonName"
+        android:layout_marginTop="103dp"
+        android:layout_below="@+id/imageView"
+        android:layout_alignStart="@+id/txtUserPassword" />
 
     <EditText
         android:id="@+id/txtUserPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="299dp"
+        android:layout_height="48dp"
+        android:background="@color/colorAccent"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:hint="@string/your_password"
         android:ems="14"
         android:inputType="textPassword"
-        android:layout_marginBottom="17dp"
-        android:layout_above="@+id/btbConfirmRegistration"
-        android:layout_alignEnd="@+id/btbConfirmRegistration" />
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/txtUserNicName"
+        android:layout_alignStart="@+id/btbConfirmRegistration" />
 
     <Button
         android:id="@+id/btbConfirmRegistration"
@@ -33,21 +41,20 @@
         android:background="@color/colorPrimary"
         android:textColor="#FFFFFF"
         android:onClick="confirm"
+        android:ems="18"
         android:text="@string/confirm"
-        android:layout_centerVertical="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="54dp" />
+        android:layout_marginTop="26dp"
+        android:layout_below="@+id/txtUserPassword"
+        android:layout_centerHorizontal="true" />
 
-    <EditText
-        android:id="@+id/txtUserNicName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/txtUserEmail"
-        android:layout_alignStart="@+id/txtUserEmail"
-        android:layout_marginBottom="11dp"
-        android:hint="@string/nic_name"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:layout_alignEnd="@+id/txtUserEmail" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="122dp"
+        android:layout_height="122dp"
+        app:srcCompat="@drawable/btc"
+        android:layout_marginTop="76dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
 
 </RelativeLayout>
