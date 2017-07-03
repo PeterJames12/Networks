@@ -67,9 +67,9 @@ public class CantripFragment extends Fragment {
     private void configurationTables() {
         List<String> list = new ArrayList<>();
         list.add("Select games table");
-        list.add("Table 1, rate is 1 ฿");
-        list.add("Table 2, rate is 5 ฿");
-        list.add("Table 3, rate is 10 ฿");
+        list.add("฿ Game table 1, rate is 1 ฿");
+        list.add("฿ Game table 2, rate is 5 ฿");
+        list.add("฿ Game table 3, rate is 10 ฿");
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), R.layout.tables_spinner, list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -132,17 +132,17 @@ public class CantripFragment extends Fragment {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 jackpotMoney = dataSnapshot.getValue(Long.class);
-                txtJackpot.setText("Jackpot: " + String.valueOf(jackpotMoney) + "");
+                txtJackpot.setText(String.valueOf(jackpotMoney));
             }
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
                 jackpotMoney = dataSnapshot.getValue(Long.class);
-                txtJackpot.setText("Jackpot: " + String.valueOf(jackpotMoney) + "");
+                txtJackpot.setText(String.valueOf(jackpotMoney));
             }
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
                 jackpotMoney = dataSnapshot.getValue(Long.class);
-                txtJackpot.setText("Jackpot: " + String.valueOf(jackpotMoney) + "");
+                txtJackpot.setText(String.valueOf(jackpotMoney));
             }
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {

@@ -14,42 +14,39 @@
         android:textColor="#FFFFFF"
         android:ems="18"
         android:text="@string/take_part"
-        android:layout_below="@+id/spnTableGames"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="138dp" />
+        android:layout_marginBottom="20dp" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="122dp"
         android:layout_height="122dp"
-        app:srcCompat="@drawable/btc"
-        android:layout_marginTop="32dp"
-        android:layout_marginStart="17dp"
+        app:srcCompat="@drawable/btc_white"
+        android:layout_marginTop="17dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
-        android:id="@+id/txtJackpot"
+        android:id="@+id/txtTitleJackpot"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/jackpot"
-        android:layout_above="@+id/txtTimeLeft"
-        android:layout_alignStart="@+id/txtTimeLeft"
-        android:layout_marginBottom="29dp" />
+        android:layout_above="@+id/txtJackpot"
+        android:layout_alignEnd="@+id/txtJackpot" />
 
     <TextView
         android:id="@+id/txtTimeLeft"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/five_seconds_left"
-        android:layout_marginEnd="20dp"
-        android:layout_alignBottom="@+id/imageView"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="42dp" />
+        android:layout_marginBottom="21dp"
+        android:layout_above="@+id/spnTableGames"
+        android:layout_alignEnd="@+id/txtJackpot" />
 
     <Spinner
         android:id="@+id/spnTableGames"
@@ -57,9 +54,33 @@
         android:layout_height="48dp"
         android:background="@color/colorAccent"
 
-        android:layout_marginTop="96dp"
         android:spinnerMode="dialog"
+        android:layout_marginBottom="84dp"
+        android:layout_alignBottom="@+id/btnTakePart"
+        android:layout_alignStart="@+id/btnTakePart"
+        android:layout_alignEnd="@+id/btnTakePart" />
+
+    <TextView
+        android:id="@+id/txtJackpot"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:textSize="48sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="365"
+        android:layout_above="@+id/txtTimeLeft"
+        android:layout_alignEnd="@+id/spnTableGames" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:textSize="23sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/imageView"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:text="Короче типу текст" />
 
 </RelativeLayout>

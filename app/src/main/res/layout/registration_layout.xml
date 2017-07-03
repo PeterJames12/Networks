@@ -51,7 +51,7 @@
         android:id="@+id/imageView"
         android:layout_width="122dp"
         android:layout_height="122dp"
-        app:srcCompat="@drawable/btc"
+        app:srcCompat="@drawable/btc_white"
         android:layout_marginTop="76dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />

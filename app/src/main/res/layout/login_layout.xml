@@ -13,7 +13,7 @@
 
         <EditText
             android:id="@+id/txtPassword"
-            android:layout_width="299dp"
+            android:layout_width="239dp"
             android:layout_height="48dp"
             android:ems="10"
             android:textColor="#FFFFFF"
@@ -23,9 +23,9 @@
             android:background="@color/colorAccent"
             tools:layout_editor_absoluteX="32dp"
             tools:layout_editor_absoluteY="221dp"
-            android:layout_marginTop="144dp"
+            android:layout_marginTop="163dp"
             android:layout_below="@+id/imageView"
-            android:layout_centerHorizontal="true" />
+            android:layout_toEndOf="@+id/imageView2" />
 
         <Button
             android:id="@+id/btnLogin"
@@ -38,19 +38,28 @@
             android:ems="23"
             tools:layout_editor_absoluteX="245dp"
             tools:layout_editor_absoluteY="282dp"
-            android:layout_alignTop="@+id/txtPassword"
-            android:layout_alignStart="@+id/txtPassword"
-            android:layout_marginTop="58dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/txtPassword"
+            android:layout_alignStart="@+id/imageView2"
             android:layout_alignEnd="@+id/txtPassword" />
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="122dp"
-            android:layout_height="122dp"
-            app:srcCompat="@drawable/btc"
+            android:layout_height="132dp"
+            app:srcCompat="@drawable/btc_white"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="70dp" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="52sp"
+            android:layout_height="50sp"
+            app:srcCompat="@drawable/lock"
+            android:layout_marginStart="33dp"
+            android:layout_alignTop="@+id/txtPassword"
+            android:layout_alignParentStart="true" />
 
     </RelativeLayout>
 

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Networks</string>
     <string name="login">Sign in</string>
-    <string name="your_password">Your password</string>
+    <string name="your_password">" "Your password</string>
     <string name="ok">OK</string>
     <string name="how_much">How much ฿</string>
     <string name="forgot_password">forgot password</string>
