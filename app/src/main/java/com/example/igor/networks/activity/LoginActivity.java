@@ -15,6 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.mikepenz.materialdrawer.util.KeyboardUtil;
 
 import io.realm.Realm;
+import io.realm.RealmConfiguration;
 
 /**
  * @author Igor Hnes on 06.06.17.
@@ -82,12 +83,12 @@ public class LoginActivity extends AppCompatActivity {
 
     public void registration(View view) {
 
-//        RealmConfiguration config = new RealmConfiguration
-//                .Builder()
-//                .deleteRealmIfMigrationNeeded()
-//                .build();
-//
-//        Realm.setDefaultConfiguration(config);
+        RealmConfiguration config = new RealmConfiguration
+                .Builder()
+                .deleteRealmIfMigrationNeeded()
+                .build();
+
+        Realm.setDefaultConfiguration(config);
 
 //        realm = Realm.getDefaultInstance();
 //        realm.beginTransaction();

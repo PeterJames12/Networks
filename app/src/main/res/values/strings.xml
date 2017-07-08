@@ -24,4 +24,7 @@
     <string name="statistic">Statistic</string>
     <string name="five_seconds_left">Five seconds left</string>
     <string name="jackpot">Jackpot:</string>
+    <string name="add_your_private_key">add your private key</string>
+    <string name="add">ADD</string>
+    <string name="add_your_email">add your email</string>
 </resources>

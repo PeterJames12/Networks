@@ -16,7 +16,7 @@ public class ParticipantsServiceImpl implements ParticipantsService {
      * {@inheritDoc}.
      */
     @Override
-    public void addUserToParticipantsChild(String userKey, String dataOfAdded, Long money, String userName) {
+    public void addUserToParticipantsChild(String userKey, String dataOfAdded, String money, String userName) {
         getReference();
         final Participant participant = new Participant();
         participant.setUserKey(userKey);

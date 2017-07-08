@@ -19,6 +19,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+    }
 }
 
 dependencies {
@@ -54,8 +60,8 @@ dependencies {
     // FirebaseUI
     compile 'com.firebaseui:firebase-ui-auth:0.6.0'
 
-    // https://mvnrepository.com/artifact/org.bitcoinj/bitcoinj-core
-//    compile group: 'org.bitcoinj', name: 'bitcoinj-core', version: '0.12'
+    //Ether
+    compile ('org.web3j:core-android:2.2.1')
 
 }
 apply plugin: 'com.google.gms.google-services'

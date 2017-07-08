@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@drawable/welcome"
+    android:background="@drawable/ether"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -16,8 +16,8 @@
         android:background="@color/colorAccent"
         android:ems="14"
         android:inputType="textPersonName"
-        android:layout_marginTop="103dp"
-        android:layout_below="@+id/imageView"
+        android:layout_marginBottom="54dp"
+        android:layout_above="@+id/btbConfirmRegistration"
         android:layout_alignStart="@+id/txtUserPassword" />
 
     <EditText
@@ -30,9 +30,9 @@
         android:hint="@string/your_password"
         android:ems="14"
         android:inputType="textPassword"
-        android:layout_marginTop="25dp"
-        android:layout_below="@+id/txtUserNicName"
-        android:layout_alignStart="@+id/btbConfirmRegistration" />
+        android:layout_below="@+id/logo"
+        android:layout_alignStart="@+id/btbConfirmRegistration"
+        android:layout_marginTop="161dp" />
 
     <Button
         android:id="@+id/btbConfirmRegistration"
@@ -43,18 +43,18 @@
         android:onClick="confirm"
         android:ems="18"
         android:text="@string/confirm"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="18dp"
         android:layout_below="@+id/txtUserPassword"
         android:layout_centerHorizontal="true" />
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="122dp"
-        android:layout_height="122dp"
-        app:srcCompat="@drawable/btc_white"
-        android:layout_marginTop="76dp"
+        android:id="@+id/logo"
+        android:layout_width="70dp"
+        android:layout_height="60dp"
+        app:srcCompat="@drawable/logo"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp" />
 
 
 </RelativeLayout>

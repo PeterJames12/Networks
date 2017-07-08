@@ -13,7 +13,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.igor.networks.R;
+import com.example.igor.networks.currency.Currency;
 import com.example.igor.networks.model.CurrentUser;
+import com.example.igor.networks.model.LuckyEther;
 import com.example.igor.networks.service.CantripWalletService;
 import com.example.igor.networks.service.ParticipantsService;
 import com.example.igor.networks.service.factory.ServiceFactory;
@@ -36,9 +38,11 @@ import io.realm.Realm;
 public class CantripFragment extends Fragment {
 
     private DatabaseReference databaseReferenceJackpot;
+    private DatabaseReference databaseLuckyEther;
     private Long jackpotMoney = 0L;
     private TextView txtJackpot;
     private Spinner spinner;
+    private LuckyEther luckyEther;
 
     public CantripFragment() {
     }
@@ -49,6 +53,8 @@ public class CantripFragment extends Fragment {
         View view = inflater.inflate(R.layout.cantrip_layout, null);
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReferenceJackpot = firebaseDatabase.getReference().child("jackpot");
+        databaseLuckyEther = firebaseDatabase.getReference().child("LuckyEther");
+        listenerUtil();
         txtJackpot = (TextView) view.findViewById(R.id.txtJackpot);
         listenerJackpot();
         Button btnTakePartInCantrip = (Button) view.findViewById(R.id.btnTakePart);
@@ -83,31 +89,41 @@ public class CantripFragment extends Fragment {
             Snackbar.make(v, "Can't be empty", Snackbar.LENGTH_SHORT).show();
             return;
         }
-        int itemPosition = spinner.getSelectedItemPosition();
-        final Long money = sayHowMuch(itemPosition);
+        final String address = getAddress();
+        final String money = sayHowMuch();
         final CurrentUser currentUser = getCurrentUser();
+//        final CantripWalletService cantripWalletService = ServiceFactory.getCantripWalletService();
+//        String result = cantripWalletService.putMoney(money, currentUser.getPrivateKey(),
+//                address, luckyEther.getToken());
         final ParticipantsService participantsService = ServiceFactory.getParticipantsService();
         participantsService.addUserToParticipantsChild(currentUser.getKey(),
                 LocalDate.now().toString(),
                 money,
                 currentUser.getNicName());
-        final CantripWalletService cantripWalletService = ServiceFactory.getCantripWalletService();
-        cantripWalletService.putMoney(money);
-        Snackbar.make(v, "Accepted"
-                + " "
-                + money
-                + " "
-                + "฿", Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(v, currentUser.getPrivateKey(), Snackbar.LENGTH_SHORT).show();
     }
 
-    private Long sayHowMuch(int itemPosition) {
-        switch (itemPosition) {
+    private String getAddress() {
+        switch (spinner.getSelectedItemPosition()) {
             case 1:
-                return 1L;
+                return luckyEther.getFirstWallet();
             case 2:
-                return 5L;
+                return luckyEther.getSecondWallet();
             case 3:
-                return 10L;
+                return luckyEther.getThirdWallet();
+            default:
+                return null;
+        }
+    }
+
+    private String sayHowMuch() {
+        switch (spinner.getSelectedItemPosition()) {
+            case 1:
+                return Currency.rateFirst;
+            case 2:
+                return Currency.rateSecond;
+            case 3:
+                return Currency.rateThird;
             default:
                 return null;
         }
@@ -149,6 +165,36 @@ public class CantripFragment extends Fragment {
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+    }
+
+    private void listenerUtil() {
+
+        databaseLuckyEther.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                luckyEther = dataSnapshot.getValue(LuckyEther.class);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
     }

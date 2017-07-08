@@ -10,6 +10,15 @@ public class CurrentUser extends RealmObject {
     private String nicName;
     private String password;
     private String key;
+    private String privateKey;
+
+    public String getPrivateKey() {
+        return privateKey;
+    }
+
+    public void setPrivateKey(String privateKey) {
+        this.privateKey = privateKey;
+    }
 
     public String getKey() {
         return key;

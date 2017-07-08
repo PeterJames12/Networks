@@ -7,6 +7,7 @@ public interface CantripWalletService {
 
     /**
      * @param money is going to cantrip wallet.
+     * @return message result.
      */
-    void putMoney(Long money);
+    String putMoney(String money, String privateKey, String address, String token);
 }

@@ -8,7 +8,7 @@ public class Participant {
     private String nicName;
     private String userKey;
     private String dataOfAdded;
-    private Long userMoney;
+    private String userMoney;
 
     public String getNicName() {
         return nicName;
@@ -26,11 +26,11 @@ public class Participant {
         this.userKey = userKey;
     }
 
-    public Long getUserMoney() {
+    public String getUserMoney() {
         return userMoney;
     }
 
-    public void setUserMoney(Long userMoney) {
+    public void setUserMoney(String userMoney) {
         this.userMoney = userMoney;
     }
 

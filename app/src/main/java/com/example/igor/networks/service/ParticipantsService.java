@@ -12,5 +12,5 @@ public interface ParticipantsService {
      * @param money means how much user pushed the money.
      * @param userName actually is user nic name in system.
      */
-    void addUserToParticipantsChild(String userKey, String dataOfAdded, Long money, String userName);
+    void addUserToParticipantsChild(String userKey, String dataOfAdded, String money, String userName);
 }

@@ -55,7 +55,7 @@ public class WinnersFragment extends Fragment {
     }
 
     /**
-     * Notification about new winners.
+     * Notification about ether winners.
      *
      * @param nicName winner
      * @param money   how mush he or she wins.
